@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 import NewsItem from "./NewsItem";
 
 
-const NewsBoard = () => {
+const NewsBoard = ({category}) => {
  
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
-       let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=383231e3ddbe4267ad02e92adf5bf638`;
+       let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=383231e3ddbe4267ad02e92adf5bf638`;
        fetch(url).then(response => response.json().then(data => setArticles(data.articles)))
 
-    }, [])
+    }, [category])
 
   return (
     <div>
